@@ -42,14 +42,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Called when the user was prompted to input their current passcode.
  Return YES if passcode was right and NO otherwise.
-
+ 
  Returning NO will cause a warning label to appear
  */
 - (BOOL)passcodeSettingsViewController:(TOPasscodeSettingsViewController *)passcodeSettingsViewController
              didAttemptCurrentPasscode:(NSString *)passcode;
 
 /** Called when the user has successfully set a new passcode. At this point, you should save over
-    the old passcode with the new one. */
+ the old passcode with the new one. */
 - (void)passcodeSettingsViewController:(TOPasscodeSettingsViewController *)passcodeSettingsViewController
                 didChangeToNewPasscode:(NSString *)passcode ofType:(TOPasscodeType)type;
 
@@ -60,10 +60,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  A standard system-styled view controller that users can use to change the passcode
  that they will need to enter for the main passcode view controller.
-
+ 
  This controller allows requiring the user to enter their previous passcode in first,
  and has passcode validation by requiring them to enter the new passcode twice.
  */
+
+@class TOPasscodeInputField;
+@class TOPasscodeSettingsKeypadView;
+@class TOPasscodeSettingsWarningLabel;
 
 @interface TOPasscodeSettingsViewController : UIViewController
 
@@ -88,16 +92,24 @@ NS_ASSUME_NONNULL_BEGIN
 /** If set, the view controller will disable input until this date time has been reached */
 @property (nonatomic, strong, nullable) NSDate *disabledInputDate;
 
+/* Views */
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *errorLabel;
+@property (nonatomic, strong) TOPasscodeInputField *inputField;
+@property (nonatomic, strong) TOPasscodeSettingsKeypadView *keypadView;
+@property (nonatomic, strong) TOPasscodeSettingsWarningLabel *warningLabel;
+
 /*
  Create a new instance with the desird light or dark style
-
+ 
  @param style The visual style of the view controller
  */
 - (instancetype)initWithStyle:(TOPasscodeSettingsViewStyle)style;
 
 /*
  Changes the passcode type and animates if required
-
+ 
  @param passcodeType Change the type of passcode to enter.
  @param animated Play a crossfade animation.
  */
@@ -106,3 +118,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

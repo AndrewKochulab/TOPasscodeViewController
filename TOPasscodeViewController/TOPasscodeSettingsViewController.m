@@ -40,14 +40,6 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 @property (nonatomic, assign) CGRect keyboardFrame;
 @property (nonatomic, readonly) CGRect contentOverlapFrame; // Either the keypad or the system keyboard
 
-/* Views */
-@property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *errorLabel;
-@property (nonatomic, strong) TOPasscodeInputField *inputField;
-@property (nonatomic, strong) TOPasscodeSettingsKeypadView *keypadView;
-@property (nonatomic, strong) TOPasscodeSettingsWarningLabel *warningLabel;
-
 /* Bar Items */
 @property (nonatomic, strong) UIBarButtonItem *nextBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *doneBarButtonItem;
@@ -574,3 +566,4 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 }
 
 @end
+
